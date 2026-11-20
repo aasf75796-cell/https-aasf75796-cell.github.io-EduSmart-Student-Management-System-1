@@ -1,0 +1,327 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduSmart | Student Management</title>
+
+    <!-- Bootstrap RTL -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Effects -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                <span class="brand-icon">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </span>
+                Edu<span>Smart</span>
+            </a>
+
+            <div class="nav-status">
+                <span class="status-dot"></span>
+                نظام إدارة الطلاب
+            </div>
+
+            <button class="theme-toggle" id="themeToggle" type="button" title="تغيير المظهر">
+                <i class="bi bi-sun-fill"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <main class="container dashboard-container">
+
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div>
+                <span class="welcome-label">STUDENT MANAGEMENT SYSTEM</span>
+                <h1>لوحة التحكم <span>الرئيسية</span></h1>
+                <p>كل بيانات طلابك ونتائجهم في مكان واحد.</p>
+            </div>
+
+            <div class="welcome-icon">
+                <i class="bi bi-graph-up-arrow"></i>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon blue">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+                <div>
+                    <p>إجمالي الطلاب</p>
+                    <h3 id="totalStudents">0</h3>
+                </div>
+                <span class="stat-decoration">01</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <div>
+                    <p>الطلاب الناجحون</p>
+                    <h3 id="passedStudents">0</h3>
+                </div>
+                <span class="stat-decoration">02</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon red">
+                    <i class="bi bi-x-circle-fill"></i>
+                </div>
+                <div>
+                    <p>الطلاب الراسبون</p>
+                    <h3 id="failedStudents">0</h3>
+                </div>
+                <span class="stat-decoration">03</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon purple">
+                    <i class="bi bi-award-fill"></i>
+                </div>
+                <div>
+                    <p>متوسط الفصل</p>
+                    <h3 id="classAverage">0%</h3>
+                </div>
+                <span class="stat-decoration">04</span>
+            </div>
+
+        </section>
+
+        <!-- Add Student -->
+        <section class="main-card">
+
+            <div class="section-heading">
+                <div class="heading-icon">
+                    <i class="bi bi-person-plus-fill"></i>
+                </div>
+
+                <div>
+                    <h4>إضافة طالب جديد</h4>
+                    <p>أدخل بيانات الطالب ودرجاته الدراسية</p>
+                </div>
+            </div>
+
+            <form id="studentForm" novalidate>
+
+                <!-- Student Name -->
+                <div class="mb-4">
+                    <label for="studentName" class="form-label">اسم الطالب</label>
+
+                    <div class="input-wrapper">
+                        <i class="bi bi-person"></i>
+                        <input
+                            type="text"
+                            id="studentName"
+                            class="form-control"
+                            placeholder="اكتب اسم الطالب بالكامل"
+                        >
+                    </div>
+                </div>
+
+                <!-- Grades -->
+                <label class="form-label">الدرجات الدراسية</label>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label for="grade1" class="small-label">المادة الأولى</label>
+                        <input
+                            type="number"
+                            id="grade1"
+                            class="form-control"
+                            placeholder="0 - 100"
+                            min="0"
+                            max="100"
+                        >
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="grade2" class="small-label">المادة الثانية</label>
+                        <input
+                            type="number"
+                            id="grade2"
+                            class="form-control"
+                            placeholder="0 - 100"
+                            min="0"
+                            max="100"
+                        >
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="grade3" class="small-label">المادة الثالثة</label>
+                        <input
+                            type="number"
+                            id="grade3"
+                            class="form-control"
+                            placeholder="0 - 100"
+                            min="0"
+                            max="100"
+                        >
+                    </div>
+
+                </div>
+
+                <!-- Attendance -->
+                <div class="mb-4">
+                    <label for="attendance" class="form-label">نسبة الحضور %</label>
+
+                    <div class="input-wrapper">
+                        <i class="bi bi-calendar-check"></i>
+                        <input
+                            type="number"
+                            id="attendance"
+                            class="form-control"
+                            placeholder="أدخل نسبة الحضور"
+                            min="0"
+                            max="100"
+                        >
+                    </div>
+                </div>
+
+                <!-- Add Button -->
+                <button type="button" id="addStudent" class="btn-add">
+                    <i class="bi bi-plus-lg"></i>
+                    إضافة الطالب إلى النظام
+                </button>
+
+            </form>
+
+            <!-- Messages -->
+            <div id="errorMessage" class="alert alert-danger mt-3" style="display:none;"></div>
+            <div id="successMessage" class="alert alert-success mt-3" style="display:none;"></div>
+
+        </section>
+
+        <!-- Students List -->
+        <section class="main-card">
+
+            <div class="section-heading">
+                <div class="heading-icon green-icon">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+
+                <div>
+                    <h4>قائمة الطلاب</h4>
+                    <p>متابعة بيانات الطلاب ومستواهم الدراسي</p>
+                </div>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="students-toolbar">
+
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input
+                        type="search"
+                        id="studentSearch"
+                        placeholder="ابحث عن طالب..."
+                    >
+                </div>
+
+                <select id="studentFilter" class="form-select">
+                    <option value="all">جميع الطلاب</option>
+                    <option value="passed">الناجحون</option>
+                    <option value="failed">الراسبون</option>
+                </select>
+
+            </div>
+
+            <!-- Students Display -->
+            <div id="studentsList">
+                <p class="empty-message">لم تتم إضافة أي طالب حتى الآن.</p>
+            </div>
+
+        </section>
+
+        <!-- Grace Committee -->
+        <section class="grace-card">
+
+            <div class="grace-content">
+
+                <div class="grace-icon">
+                    <i class="bi bi-stars"></i>
+                </div>
+
+                <div>
+                    <span class="grace-label">SPECIAL FEATURE</span>
+                    <h4>لجنة الرأفة</h4>
+                    <p>تحليل الطلاب المستحقين لتطبيق درجات الرأفة.</p>
+                </div>
+
+            </div>
+
+            <button type="button" id="graceCommittee" class="grace-button">
+                تشغيل لجنة الرأفة
+                <i class="bi bi-arrow-left"></i>
+            </button>
+
+        </section>
+
+        <!-- Final Report -->
+        <section class="main-card">
+
+            <div class="section-heading">
+
+                <div class="heading-icon report-icon">
+                    <i class="bi bi-file-earmark-bar-graph-fill"></i>
+                </div>
+
+                <div>
+                    <h4>التقرير النهائي</h4>
+                    <p>ملخص نتائج لجنة الرأفة</p>
+                </div>
+
+            </div>
+
+            <div id="finalReport">
+                <p class="empty-message">
+                    التقرير النهائي سيظهر هنا بعد تشغيل لجنة الرأفة.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>EduSmart © 2026 — نظام إدارة نتائج الطلاب</p>
+            <span>Designed with <i class="bi bi-heart-fill"></i></span>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+
+</body>
+</html>
+```
